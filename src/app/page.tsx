@@ -1,7 +1,14 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { ColorPicker, FloatButton } from "antd";
+import { FormatPainterOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { Color } from "antd/es/color-picker";
 
 export default function Home() {
+  const [color, setColor] = useState<Color>("#1677ff");
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -89,6 +96,13 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+        <ColorPicker value={color} onChange={setColor}>
+          <FloatButton
+            icon={<FormatPainterOutlined />}
+            type="primary"
+            style={{ insetInlineEnd: 24 }}
+          />
+        </ColorPicker>
       </footer>
     </div>
   );
